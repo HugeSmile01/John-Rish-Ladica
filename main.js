@@ -90,60 +90,42 @@
           // Add active class to clicked button
           this.classList.add('active');
           
-          // Filter portfolio items with staggered animation
-          let delay = 0;
+          // Filter portfolio items with simplified animation
           portfolioItems.forEach((item, index) => {
             const category = item.getAttribute('data-category');
             
             if (filter === 'all' || category === filter) {
-              setTimeout(() => {
-                item.style.display = 'block';
-                item.style.opacity = '0';
-                item.style.transform = 'translateY(20px)';
-                
-                setTimeout(() => {
-                  item.style.transition = 'all 0.4s cubic-bezier(0.4,0,0.2,1)';
-                  item.style.opacity = '1';
-                  item.style.transform = 'translateY(0)';
-                }, 50);
-              }, delay);
-              delay += 100;
+              item.style.display = 'block';
+              item.style.opacity = '1';
+              item.style.transform = 'translateY(0)';
             } else {
-              item.style.transition = 'all 0.3s ease';
-              item.style.opacity = '0';
-              item.style.transform = 'translateY(-20px)';
-              
-              setTimeout(() => {
-                item.style.display = 'none';
-              }, 300);
+              item.style.display = 'none';
             }
           });
         });
       });
       
-      // Enhanced Intersection Observer for Animations
+      // Simplified Intersection Observer for Animations
       const observerOptions = {
         threshold: 0.1,
         rootMargin: '0px 0px -50px 0px'
       };
       
       const observer = new IntersectionObserver(function(entries) {
-        entries.forEach((entry, index) => {
+        entries.forEach((entry) => {
           if (entry.isIntersecting) {
-            setTimeout(() => {
-              entry.target.classList.add('visible');
-              entry.target.style.opacity = '1';
-              entry.target.style.transform = 'translateY(0)';
-            }, index * 100);
+            entry.target.classList.add('visible');
+            entry.target.style.opacity = '1';
+            entry.target.style.transform = 'translateY(0)';
           }
         });
       }, observerOptions);
       
-      // Observe all animate-on-scroll elements
+      // Observe all animate-on-scroll elements with simplified setup
       document.querySelectorAll('.animate-on-scroll').forEach((el, index) => {
         el.style.opacity = '0';
-        el.style.transform = 'translateY(30px)';
-        el.style.transition = 'all 0.6s cubic-bezier(0.4,0,0.2,1)';
+        el.style.transform = 'translateY(20px)';
+        el.style.transition = 'opacity 0.3s ease, transform 0.3s ease';
         observer.observe(el);
       });
       
@@ -159,14 +141,14 @@
         }
       });
       
-      // Enhanced Gallery Item Hover Effects
+      // Enhanced Gallery Item Hover Effects - Simplified
       portfolioItems.forEach(item => {
         item.addEventListener('mouseenter', function() {
-          this.style.transform = 'translateY(-10px) scale(1.02)';
+          this.style.transform = 'translateY(-5px)';
         });
         
         item.addEventListener('mouseleave', function() {
-          this.style.transform = 'translateY(0) scale(1)';
+          this.style.transform = 'translateY(0)';
         });
       });
       
@@ -192,18 +174,12 @@
         }
       });
       
-      // Performance: Lazy load images
+      // Performance: Simplified lazy load images
       const imageObserver = new IntersectionObserver((entries, observer) => {
         entries.forEach(entry => {
           if (entry.isIntersecting) {
             const img = entry.target;
-            img.style.opacity = '0';
-            img.style.transition = 'opacity 0.3s ease';
-            
-            setTimeout(() => {
-              img.style.opacity = '1';
-            }, 100);
-            
+            img.style.opacity = '1';
             observer.unobserve(img);
           }
         });
