@@ -159,20 +159,85 @@
         }
       });
       
-      // Enhanced Gallery Item Hover Effects
+      // Enhanced Gallery Item Hover Effects with Mobile Support
       portfolioItems.forEach(item => {
+        // Desktop hover effects
         item.addEventListener('mouseenter', function() {
-          this.style.transform = 'translateY(-10px) scale(1.02)';
+          if (window.innerWidth > 768) {
+            this.style.transform = 'translateY(-10px) scale(1.02)';
+          }
         });
         
         item.addEventListener('mouseleave', function() {
-          this.style.transform = 'translateY(0) scale(1)';
+          if (window.innerWidth > 768) {
+            this.style.transform = 'translateY(0) scale(1)';
+          }
+        });
+
+        // Mobile touch effects with haptic feedback simulation
+        item.addEventListener('touchstart', function() {
+          this.style.transition = 'transform 0.1s ease';
+          this.style.transform = 'scale(0.98)';
+        });
+
+        item.addEventListener('touchend', function() {
+          this.style.transition = 'transform 0.3s cubic-bezier(0.4, 0, 0.2, 1)';
+          this.style.transform = 'scale(1)';
+        });
+
+        // Enhanced click/tap handling
+        item.addEventListener('click', function(e) {
+          e.preventDefault();
+          
+          // Add ripple effect for better feedback
+          const ripple = document.createElement('div');
+          ripple.style.cssText = `
+            position: absolute;
+            border-radius: 50%;
+            background: rgba(0, 196, 204, 0.3);
+            width: 10px;
+            height: 10px;
+            left: ${e.offsetX - 5}px;
+            top: ${e.offsetY - 5}px;
+            animation: ripple 0.6s ease-out;
+            pointer-events: none;
+            z-index: 1000;
+          `;
+          
+          this.style.position = 'relative';
+          this.appendChild(ripple);
+          
+          setTimeout(() => {
+            ripple.remove();
+          }, 600);
         });
       });
       
-      // Responsive Navigation Update
+      // Responsive Navigation Update - Enhanced
       function updateNavigation() {
-        // No specific responsive updates needed for top navbar
+        const isMobile = window.innerWidth <= 768;
+        const navbar = document.querySelector('.liquid-navbar');
+        
+        if (isMobile) {
+          // Add mobile-specific classes and behaviors
+          navbar?.classList.add('mobile');
+          
+          // Enhanced touch feedback for mobile devices
+          document.querySelectorAll('.nav-link, .filter-btn, .gallery-item').forEach(element => {
+            element.addEventListener('touchstart', function() {
+              this.style.transform = 'scale(0.98)';
+            });
+            
+            element.addEventListener('touchend', function() {
+              setTimeout(() => {
+                this.style.transform = '';
+              }, 150);
+            });
+          });
+          
+        } else {
+          navbar?.classList.remove('mobile');
+        }
       }
       
       // Throttled resize handler for performance
@@ -216,6 +281,55 @@
       // Initialize FineStyle Framework
       if (window.FineStyle && typeof window.FineStyle.initAdvanced === 'function') {
         window.FineStyle.initAdvanced();
+      }
+
+      // Mobile-specific enhancements
+      if ('ontouchstart' in window) {
+        document.body.classList.add('touch-device');
+        
+        // Add pull-to-refresh visual feedback (concept only)
+        let startY = 0;
+        let pullDistance = 0;
+        const pullThreshold = 100;
+        
+        document.addEventListener('touchstart', function(e) {
+          startY = e.touches[0].clientY;
+        });
+        
+        document.addEventListener('touchmove', function(e) {
+          if (window.scrollY === 0) {
+            pullDistance = e.touches[0].clientY - startY;
+            if (pullDistance > 0 && pullDistance < pullThreshold) {
+              document.body.style.transform = `translateY(${pullDistance * 0.5}px)`;
+              document.body.style.opacity = 1 - (pullDistance / pullThreshold) * 0.1;
+            }
+          }
+        });
+        
+        document.addEventListener('touchend', function() {
+          document.body.style.transform = '';
+          document.body.style.opacity = '';
+          pullDistance = 0;
+        });
+
+        // Optimize scroll performance for mobile
+        let ticking = false;
+        function updateScrollEffects() {
+          // Add subtle parallax effect for hero section
+          const heroSection = document.querySelector('.hero-section');
+          if (heroSection) {
+            const scrolled = window.pageYOffset;
+            heroSection.style.transform = `translateY(${scrolled * 0.2}px)`;
+          }
+          ticking = false;
+        }
+
+        document.addEventListener('scroll', function() {
+          if (!ticking) {
+            requestAnimationFrame(updateScrollEffects);
+            ticking = true;
+          }
+        });
       }
       
       console.log('Portfolio website initialized successfully with security features');
