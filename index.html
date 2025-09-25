@@ -6,6 +6,13 @@
   <title>John Rish Ladica | Canva Template Creator</title>
   <meta name="description" content="Professional Canva Template Creator with 80+ templates designed. Specialized in educational and creative designs for students and institutions.">
   
+  <!-- PWA Manifest for CWA -->
+  <link rel="manifest" href="manifest.json">
+  <meta name="theme-color" content="#00c4cc">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="default">
+  <meta name="apple-mobile-web-app-title" content="John Rish Ladica">
+  
   <!-- FineStyle Framework CSS -->
   <link rel="stylesheet" href="res/fs-2.4.min.css">
   
@@ -24,57 +31,69 @@
 </head>
 <body>
   
-  <!-- Sidebar Toggle Button -->
-  <button class="sidebar-toggle" id="sidebarToggle" aria-label="Toggle Navigation Menu" role="button">
-    <i class="fas fa-bars"></i>
-  </button>
-  <hr>
-  <!-- Sidebar Navigation -->
-  <nav class="sidebar" id="sidebar" role="navigation" aria-label="Main Navigation">
-    <div class="profile-section">
-      <img src="img/IMG_20250924_121749.png" 
-           alt="John Rish Ladica - Professional Profile" 
-           class="profile-img"
-           loading="lazy">
-      <div class="profile-name">John Rish Ladica</div>
-      <div class="profile-title">Canva Template Creator</div>
-      <div class="profile-location">Hingatungan, Silago, Southern Leyte</div>
-      <div class="canva-badge">
-        <i class="fab fa-canva"></i> 3+ Years Expert
+  <!-- Liquid Navigation Bar -->
+  <nav class="liquid-navbar" id="liquidNavbar">
+    <div class="navbar-content">
+      <div class="navbar-brand">
+        <span class="brand-text">John Rish Ladica</span>
       </div>
+      <button class="navbar-toggle" id="navbarToggle" aria-label="Toggle Navigation Menu">
+        <span class="hamburger-line"></span>
+        <span class="hamburger-line"></span>
+        <span class="hamburger-line"></span>
+      </button>
     </div>
-    
-    <div class="sidebar-links">
-      <a href="#home" class="nav-link active" role="menuitem">
-        <i class="fas fa-home"></i>
-        <span>Home</span>
-      </a>
-      <a href="#about" class="nav-link" role="menuitem">
-        <i class="fas fa-user-circle"></i>
-        <span>About Me</span>
-      </a>
-      <a href="#portfolio" class="nav-link" role="menuitem">
-        <i class="fas fa-layer-group"></i>
-        <span>Template Gallery</span>
-      </a>
-      <a href="#achievements" class="nav-link" role="menuitem">
-        <i class="fas fa-trophy"></i>
-        <span>Achievements</span>
-      </a>
-      <a href="#skills" class="nav-link" role="menuitem">
-        <i class="fab fa-canva"></i>
-        <span>Canva Expertise</span>
-      </a>
-      <a href="#contact" class="nav-link" role="menuitem">
-        <i class="fas fa-envelope"></i>
-        <span>Contact</span>
-      </a>
-    </div>
-    
-    <div class="sidebar-footer">
-      <p><strong>&copy; 2024 John Rish Ladica</strong></p>
-      <p>Professional Canva Designer</p>
-      <p><small>Creating Visual Excellence</small></p>
+  </nav>
+
+  <!-- Right-side Sidebar Navigation -->
+  <nav class="sidebar-right" id="sidebarRight" role="navigation" aria-label="Main Navigation">
+    <div class="sidebar-backdrop" id="sidebarBackdrop"></div>
+    <div class="sidebar-content">
+      <div class="profile-section">
+        <img src="img/IMG_20250924_121749.png" 
+             alt="John Rish Ladica - Professional Profile" 
+             class="profile-img"
+             loading="lazy">
+        <div class="profile-name">John Rish Ladica</div>
+        <div class="profile-title">Canva Template Creator</div>
+        <div class="profile-location">Hingatungan, Silago, Southern Leyte</div>
+        <div class="canva-badge">
+          <i class="fab fa-canva"></i> 3+ Years Expert
+        </div>
+      </div>
+      
+      <div class="sidebar-links">
+        <a href="#home" class="nav-link active" role="menuitem">
+          <i class="fas fa-home"></i>
+          <span>Home</span>
+        </a>
+        <a href="#about" class="nav-link" role="menuitem">
+          <i class="fas fa-user-circle"></i>
+          <span>About Me</span>
+        </a>
+        <a href="#portfolio" class="nav-link" role="menuitem">
+          <i class="fas fa-layer-group"></i>
+          <span>Template Gallery</span>
+        </a>
+        <a href="#achievements" class="nav-link" role="menuitem">
+          <i class="fas fa-trophy"></i>
+          <span>Achievements</span>
+        </a>
+        <a href="#skills" class="nav-link" role="menuitem">
+          <i class="fab fa-canva"></i>
+          <span>Canva Expertise</span>
+        </a>
+        <a href="#contact" class="nav-link" role="menuitem">
+          <i class="fas fa-envelope"></i>
+          <span>Contact</span>
+        </a>
+      </div>
+      
+      <div class="sidebar-footer">
+        <p><strong>&copy; 2024 John Rish Ladica</strong></p>
+        <p>Professional Canva Designer</p>
+        <p><small>Creating Visual Excellence</small></p>
+      </div>
     </div>
   </nav>
 
@@ -108,7 +127,7 @@
     </section>
 
     <!-- About Section -->
-    <section id="about" class=" container">
+    <section id="about" class="container">
       <div class="animate-on-scroll">
         <h2 class="text-center mb-lg">About Me</h2>
         
@@ -127,7 +146,7 @@
           <div class="card animate-on-scroll">
             <div class="card-body">
               <h3><i class="fab fa-canva mr-sm" style="color: #00c4cc;"></i>Canva Specialization</h3>
-              <p>I'm John Rish Ladica from Hingatungan, Silago, Southern Leyte. With over 3 years of dedicated experience exclusively in Canva, I've mastered every aspect of the platform to create professional, engaging designs.</p>
+              <p>I'm John Rish Ladica from Hingatungan, Silago, Southern Leyte. With over 3 years of dedicated experience exclusively in Canva, I've mastered every aspect of the platform to create professional-quality templates.</p>
               <p><strong>Canva is my specialty</strong> - I focus entirely on this platform to deliver exceptional template designs that meet diverse needs and exceed expectations.</p>
             </div>
           </div>
@@ -135,7 +154,7 @@
           <div class="card animate-on-scroll">
             <div class="card-body">
               <h3><i class="fas fa-lightbulb mr-sm" style="color: var(--fs-accent);"></i>Design Philosophy</h3>
-              <p>Every template I create is designed with purpose and functionality in mind. I believe in creating designs that are not only visually stunning but also practical and easy to customize for end users.</p>
+              <p>Every template I create is designed with purpose and functionality in mind. I believe in creating designs that are not only visually stunning but also practical and easy to customize.</p>
               <p>My approach ensures that each of my 80+ templates serves its intended purpose while maintaining professional aesthetic standards.</p>
             </div>
           </div>
@@ -143,8 +162,8 @@
       </div>
     </section>
 
-    <!-- Portfolio/Templates Section -->
-    <section id="portfolio" class=" container">
+    <!-- Optimized Portfolio/Templates Section -->
+    <section id="portfolio" class="container">
       <div class="animate-on-scroll">
         <h2 class="text-center mb-lg">My Template Gallery</h2>
         <p class="text-center mb-lg" style="font-size: 1.1rem; color: var(--fs-text-light);">
@@ -160,297 +179,19 @@
           <button class="filter-btn" data-filter="certificate">Certificates</button>
         </div>
 
-        <!-- Gallery Container -->
-        <div class="gallery-container" id="portfolioGallery">
-          <!-- Educational Templates (8 items) -->
-          <div class="gallery-item animate-on-scroll" data-category="educational">
-            <img src="https://via.placeholder.com/400x280/4a90e2/ffffff?text=School+Presentation+Template" 
-                 alt="School Presentation Template" loading="lazy">
-            <div class="item-content">
-              <h3 class="item-title">School Presentation Template</h3>
-              <p class="item-description">Professional template designed for Hingatungan National High School academic presentations and educational activities.</p>
-              <div class="item-tags">
-                <span class="tag">Educational</span>
-                <span class="tag">School</span>
-                <span class="tag">Presentation</span>
-              </div>
-            </div>
-          </div>
-
-          <div class="gallery-item animate-on-scroll" data-category="educational">
-            <img src="https://via.placeholder.com/400x280/e67e22/ffffff?text=Student+ID+Card+Design" 
-                 alt="Student ID Card Template" loading="lazy">
-            <div class="item-content">
-              <h3 class="item-title">Student ID Card Design</h3>
-              <p class="item-description">Modern and professional student identification card template with clean layout and school branding elements.</p>
-              <div class="item-tags">
-                <span class="tag">Educational</span>
-                <span class="tag">ID Card</span>
-                <span class="tag">Student</span>
-              </div>
-            </div>
-          </div>
-
-          <div class="gallery-item animate-on-scroll" data-category="certificate">
-            <img src="https://via.placeholder.com/400x280/27ae60/ffffff?text=Achievement+Certificate" 
-                 alt="Achievement Certificate Template" loading="lazy">
-            <div class="item-content">
-              <h3 class="item-title">Achievement Certificate</h3>
-              <p class="item-description">Elegant certificate template for academic achievements, awards, and student recognitions used by 300+ students.</p>
-              <div class="item-tags">
-                <span class="tag">Certificate</span>
-                <span class="tag">Award</span>
-                <span class="tag">Educational</span>
-              </div>
-            </div>
-          </div>
-
-          <div class="gallery-item animate-on-scroll" data-category="educational">
-            <img src="https://via.placeholder.com/400x280/8e44ad/ffffff?text=Class+Schedule+Template" 
-                 alt="Class Schedule Template" loading="lazy">
-            <div class="item-content">
-              <h3 class="item-title">Class Schedule Template</h3>
-              <p class="item-description">Organized and colorful class schedule template perfect for student academic planning and time management.</p>
-              <div class="item-tags">
-                <span class="tag">Educational</span>
-                <span class="tag">Schedule</span>
-                <span class="tag">Planning</span>
-              </div>
-            </div>
-          </div>
-
-          <div class="gallery-item animate-on-scroll" data-category="educational">
-            <img src="https://via.placeholder.com/400x280/f39c12/ffffff?text=Research+Poster+Template" 
-                 alt="Research Poster Template" loading="lazy">
-            <div class="item-content">
-              <h3 class="item-title">Research Poster Template</h3>
-              <p class="item-description">Academic research poster template with structured sections for hypothesis, methodology, and findings.</p>
-              <div class="item-tags">
-                <span class="tag">Educational</span>
-                <span class="tag">Research</span>
-                <span class="tag">Academic</span>
-              </div>
-            </div>
-          </div>
-
-          <div class="gallery-item animate-on-scroll" data-category="educational">
-            <img src="https://via.placeholder.com/400x280/e74c3c/ffffff?text=School+Newsletter" 
-                 alt="School Newsletter Template" loading="lazy">
-            <div class="item-content">
-              <h3 class="item-title">School Newsletter Template</h3>
-              <p class="item-description">Informative and engaging newsletter template for school announcements, events, and community updates.</p>
-              <div class="item-tags">
-                <span class="tag">Educational</span>
-                <span class="tag">Newsletter</span>
-                <span class="tag">Communication</span>
-              </div>
-            </div>
-          </div>
-
-          <div class="gallery-item animate-on-scroll" data-category="educational">
-            <img src="https://via.placeholder.com/400x280/16a085/ffffff?text=Study+Guide+Template" 
-                 alt="Study Guide Template" loading="lazy">
-            <div class="item-content">
-              <h3 class="item-title">Study Guide Template</h3>
-              <p class="item-description">Comprehensive study guide template with sections for notes, key concepts, and practice questions.</p>
-              <div class="item-tags">
-                <span class="tag">Educational</span>
-                <span class="tag">Study Guide</span>
-                <span class="tag">Learning</span>
-              </div>
-            </div>
-          </div>
-
-          <div class="gallery-item animate-on-scroll" data-category="educational">
-            <img src="https://via.placeholder.com/400x280/2980b9/ffffff?text=Event+Invitation" 
-                 alt="School Event Invitation" loading="lazy">
-            <div class="item-content">
-              <h3 class="item-title">School Event Invitation</h3>
-              <p class="item-description">Attractive invitation template for school events, ceremonies, and special occasions with customizable details.</p>
-              <div class="item-tags">
-                <span class="tag">Educational</span>
-                <span class="tag">Invitation</span>
-                <span class="tag">Event</span>
-              </div>
-            </div>
-          </div>
-
-          <!-- Social Media Templates (6 items) -->
-          <div class="gallery-item animate-on-scroll" data-category="social">
-            <img src="https://via.placeholder.com/400x280/ff4081/ffffff?text=Instagram+Post+Template" 
-                 alt="Instagram Post Template" loading="lazy">
-            <div class="item-content">
-              <h3 class="item-title">Instagram Post Template</h3>
-              <p class="item-description">Eye-catching Instagram post template perfect for school announcements and social media engagement.</p>
-              <div class="item-tags">
-                <span class="tag">Instagram</span>
-                <span class="tag">Social Media</span>
-                <span class="tag">Marketing</span>
-              </div>
-            </div>
-          </div>
-
-          <div class="gallery-item animate-on-scroll" data-category="social">
-            <img src="https://via.placeholder.com/400x280/9b59b6/ffffff?text=Facebook+Cover+Photo" 
-                 alt="Facebook Cover Template" loading="lazy">
-            <div class="item-content">
-              <h3 class="item-title">Facebook Cover Design</h3>
-              <p class="item-description">Professional Facebook cover template used by Hingatungan Supreme Secondary Learner Government page.</p>
-              <div class="item-tags">
-                <span class="tag">Facebook</span>
-                <span class="tag">Cover Photo</span>
-                <span class="tag">Social Media</span>
-              </div>
-            </div>
-          </div>
-
-          <div class="gallery-item animate-on-scroll" data-category="social">
-            <img src="https://via.placeholder.com/400x280/3498db/ffffff?text=Story+Template" 
-                 alt="Instagram Story Template" loading="lazy">
-            <div class="item-content">
-              <h3 class="item-title">Instagram Story Template</h3>
-              <p class="item-description">Dynamic story template for sharing quick updates, announcements, and behind-the-scenes content.</p>
-              <div class="item-tags">
-                <span class="tag">Instagram</span>
-                <span class="tag">Stories</span>
-                <span class="tag">Social Media</span>
-              </div>
-            </div>
-          </div>
-
-          <div class="gallery-item animate-on-scroll" data-category="social">
-            <img src="https://via.placeholder.com/400x280/1abc9c/ffffff?text=Quote+Post+Design" 
-                 alt="Quote Post Template" loading="lazy">
-            <div class="item-content">
-              <h3 class="item-title">Inspirational Quote Post</h3>
-              <p class="item-description">Motivational quote template perfect for sharing educational and inspirational content on social platforms.</p>
-              <div class="item-tags">
-                <span class="tag">Quote</span>
-                <span class="tag">Motivation</span>
-                <span class="tag">Social Media</span>
-              </div>
-            </div>
-          </div>
-
-          <div class="gallery-item animate-on-scroll" data-category="social">
-            <img src="https://via.placeholder.com/400x280/f1c40f/ffffff?text=Event+Promotion" 
-                 alt="Event Promotion Template" loading="lazy">
-            <div class="item-content">
-              <h3 class="item-title">Event Promotion Post</h3>
-              <p class="item-description">Vibrant event promotion template for school activities, competitions, and special programs.</p>
-              <div class="item-tags">
-                <span class="tag">Event</span>
-                <span class="tag">Promotion</span>
-                <span class="tag">Social Media</span>
-              </div>
-            </div>
-          </div>
-
-          <div class="gallery-item animate-on-scroll" data-category="social">
-            <img src="https://via.placeholder.com/400x280/e67e22/ffffff?text=Announcement+Post" 
-                 alt="Announcement Post Template" loading="lazy">
-            <div class="item-content">
-              <h3 class="item-title">School Announcement Post</h3>
-              <p class="item-description">Clear and informative announcement template for important school news and updates.</p>
-              <div class="item-tags">
-                <span class="tag">Announcement</span>
-                <span class="tag">School</span>
-                <span class="tag">Social Media</span>
-              </div>
-            </div>
-          </div>
-
-          <!-- Presentation Templates (4 items) -->
-          <div class="gallery-item animate-on-scroll" data-category="presentation">
-            <img src="https://via.placeholder.com/400x280/34495e/ffffff?text=Business+Presentation" 
-                 alt="Business Presentation Template" loading="lazy">
-            <div class="item-content">
-              <h3 class="item-title">Professional Presentation Deck</h3>
-              <p class="item-description">Corporate-style presentation template perfect for school projects and academic presentations.</p>
-              <div class="item-tags">
-                <span class="tag">Presentation</span>
-                <span class="tag">Professional</span>
-                <span class="tag">Business</span>
-              </div>
-            </div>
-          </div>
-
-          <div class="gallery-item animate-on-scroll" data-category="presentation">
-            <img src="https://via.placeholder.com/400x280/95a5a6/ffffff?text=Thesis+Defense+Template" 
-                 alt="Thesis Defense Template" loading="lazy">
-            <div class="item-content">
-              <h3 class="item-title">Thesis Defense Template</h3>
-              <p class="item-description">Academic presentation template specifically designed for thesis presentations and research defenses.</p>
-              <div class="item-tags">
-                <span class="tag">Thesis</span>
-                <span class="tag">Academic</span>
-                <span class="tag">Research</span>
-              </div>
-            </div>
-          </div>
-
-          <div class="gallery-item animate-on-scroll" data-category="presentation">
-            <img src="https://via.placeholder.com/400x280/d35400/ffffff?text=Project+Proposal" 
-                 alt="Project Proposal Template" loading="lazy">
-            <div class="item-content">
-              <h3 class="item-title">Project Proposal Template</h3>
-              <p class="item-description">Structured project proposal presentation with sections for objectives, methodology, and timeline.</p>
-              <div class="item-tags">
-                <span class="tag">Project</span>
-                <span class="tag">Proposal</span>
-                <span class="tag">Planning</span>
-              </div>
-            </div>
-          </div>
-
-          <div class="gallery-item animate-on-scroll" data-category="presentation">
-            <img src="https://via.placeholder.com/400x280/c0392b/ffffff?text=Pitch+Deck+Template" 
-                 alt="Pitch Deck Template" loading="lazy">
-            <div class="item-content">
-              <h3 class="item-title">Student Pitch Deck</h3>
-              <p class="item-description">Modern pitch deck template for student competitions, business ideas, and innovation presentations.</p>
-              <div class="item-tags">
-                <span class="tag">Pitch</span>
-                <span class="tag">Innovation</span>
-                <span class="tag">Competition</span>
-              </div>
-            </div>
-          </div>
-
-          <!-- Certificate Templates (2 items) -->
-          <div class="gallery-item animate-on-scroll" data-category="certificate">
-            <img src="https://via.placeholder.com/400x280/8e44ad/ffffff?text=Participation+Certificate" 
-                 alt="Participation Certificate Template" loading="lazy">
-            <div class="item-content">
-              <h3 class="item-title">Participation Certificate</h3>
-              <p class="item-description">Professional certificate template for workshop participation, seminars, and training programs.</p>
-              <div class="item-tags">
-                <span class="tag">Certificate</span>
-                <span class="tag">Participation</span>
-                <span class="tag">Training</span>
-              </div>
-            </div>
-          </div>
-
-          <div class="gallery-item animate-on-scroll" data-category="certificate">
-            <img src="https://via.placeholder.com/400x280/2c3e50/ffffff?text=Excellence+Award" 
-                 alt="Excellence Award Template" loading="lazy">
-            <div class="item-content">
-              <h3 class="item-title">Excellence Award Certificate</h3>
-              <p class="item-description">Premium certificate template for recognizing outstanding academic performance and achievements.</p>
-              <div class="item-tags">
-                <span class="tag">Excellence</span>
-                <span class="tag">Award</span>
-                <span class="tag">Recognition</span>
-              </div>
-            </div>
+        <!-- Optimized Gallery Container with Lazy Loading -->
+        <div class="gallery-container optimized-gallery" id="portfolioGallery">
+          <!-- Gallery items will be loaded dynamically for better performance -->
+          <div class="gallery-loading">
+            <div class="loading-spinner"></div>
+            <p>Loading templates...</p>
           </div>
         </div>
       </div>
     </section>
 
     <!-- Achievements Section -->
-    <section id="achievements" class=" container">
+    <section id="achievements" class="container">
       <div class="animate-on-scroll">
         <h2 class="text-center mb-lg">Professional Achievements</h2>
         
@@ -485,7 +226,7 @@
     </section>
 
     <!-- Skills Section -->
-    <section id="skills" class=" container">
+    <section id="skills" class="container">
       <div class="animate-on-scroll">
         <h2 class="text-center mb-lg">Canva Expertise & Skills</h2>
         
@@ -547,7 +288,7 @@
     </section>
 
     <!-- Contact Section -->
-    <section id="contact" class=" container">
+    <section id="contact" class="container">
       <div class="animate-on-scroll">
         <h2 class="text-center mb-lg">Get In Touch</h2>
         <p class="text-center mb-lg" style="font-size: 1.1rem; color: var(--fs-text-light);">
@@ -605,7 +346,6 @@
 
   <!-- Scripts -->
   <script src="res/fs-2.0.min.js"></script>
-  <script src="main.js">
-  </script>
+  <script src="main.js"></script>
 </body>
 </html>
