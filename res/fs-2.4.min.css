@@ -1,0 +1,598 @@
+/*
+ FineStyle Framework CSS v2.4
+ Enhanced alignment, spacing, and professional layout for modern web applications
+ Optimized for TypeScript, Firebase integration, and security-focused development
+*/
+
+/* ============================= */
+/* Root Variables & Theme Colors */
+/* ============================= */
+:root {
+  --fs-primary: #005fcc;
+  --fs-secondary: #ffffff;
+  --fs-accent: #ff4081;
+  --fs-bg: #f8f9fa;
+  --fs-text: #212529;
+  --fs-text-light: #6c757d;
+
+  --fs-font-base: 'Inter', 'Segoe UI', Helvetica, Arial, sans-serif;
+  --fs-font-size: 16px;
+  --fs-line-height: 1.6;
+
+  --fs-space-xs: 6px;
+  --fs-space-sm: 12px;
+  --fs-space-md: 20px;
+  --fs-space-lg: 32px;
+  --fs-space-xl: 48px;
+
+  --fs-radius: 12px;
+  --fs-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+  --fs-shadow-hover: 0 8px 32px rgba(0, 0, 0, 0.12);
+
+  --fs-blur-bg: rgba(255,255,255,0.85);
+  --fs-blur-bg-dark: rgba(0,0,0,0.7);
+}
+
+/* =================== */
+/* Reset & Base Styles */
+/* =================== */
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html { 
+  font-size: var(--fs-font-size); 
+  scroll-behavior: smooth; 
+}
+
+body {
+  font-family: var(--fs-font-base);
+  line-height: var(--fs-line-height);
+  background-color: var(--fs-bg);
+  color: var(--fs-text);
+  min-height: 100vh;
+  padding-top: var(--fs-navbar-height);
+  margin: 0;
+  overflow-x: hidden;
+  transition: background-color 0.3s ease;
+}
+
+
+/* =================== */
+/* Typography & Links  */
+/* =================== */
+h1, h2, h3, h4, h5, h6 {
+  font-weight: 600;
+  color: var(--fs-text);
+  line-height: 1.3;
+  margin-bottom: var(--fs-space-sm);
+}
+
+h1 { font-size: 2.5rem; margin-bottom: var(--fs-space-md); }
+h2 { font-size: 2rem; margin-bottom: var(--fs-space-md); }
+h3 { font-size: 1.5rem; margin-bottom: var(--fs-space-sm); }
+h4 { font-size: 1.25rem; margin-bottom: var(--fs-space-sm); }
+
+p, span, li, label { 
+  font-size: 1rem; 
+  margin-bottom: var(--fs-space-xs);
+}
+
+a {
+  color: var(--fs-primary);
+  text-decoration: none;
+  transition: color 0.3s ease;
+}
+a:hover { color: var(--fs-accent); }
+
+/* =================== */
+/* Layout & Containers */
+/* =================== */
+.container {
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 var(--fs-space-lg);
+}
+
+.section {
+  padding: var(--fs-space-xl) 0;
+  margin: var(--fs-space-md) 0;
+}
+
+/* ========== */
+/* Grid & Flex */
+/* ========== */
+.grid {
+  display: grid;
+  gap: var(--fs-space-lg);
+}
+.grid-cols-2 { grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); }
+.grid-cols-3 { grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); }
+
+.flex { display: flex; }
+.flex-col { flex-direction: column; }
+.flex-center { justify-content: center; align-items: center; }
+.flex-between { justify-content: space-between; align-items: center; }
+
+/* =================== */
+/* Buttons & Interacts */
+/* =================== */
+.btn {
+  display: inline-block;
+  padding: var(--fs-space-sm) var(--fs-space-md);
+  background: var(--fs-primary);
+  color: #fff;
+  border: none;
+  border-radius: var(--fs-radius);
+  font-weight: 500;
+  font-size: 0.95rem;
+  cursor: pointer;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  margin: var(--fs-space-xs);
+  text-align: center;
+  min-width: 120px;
+}
+
+.btn:hover {
+  background: var(--fs-accent);
+  transform: translateY(-2px);
+  box-shadow: var(--fs-shadow-hover);
+}
+
+/* ========== */
+/* Card Styles */
+/* ========== */
+.card {
+  background: var(--fs-secondary);
+  border-radius: var(--fs-radius);
+  box-shadow: var(--fs-shadow);
+  overflow: hidden;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  margin: var(--fs-space-sm);
+  border: 1px solid rgba(0,0,0,0.04);
+}
+
+.card:hover {
+  transform: translateY(-4px);
+  box-shadow: var(--fs-shadow-hover);
+}
+
+.card-body {
+  padding: var(--fs-space-lg);
+}
+
+/* ================================ */
+/* Advanced UI: Liquid/Blurred BG   */
+/* ================================ */
+.fs-blur-bg {
+  background: var(--fs-blur-bg);
+  backdrop-filter: blur(20px) saturate(180%);
+  -webkit-backdrop-filter: blur(20px) saturate(180%);
+  border: 1px solid rgba(255,255,255,0.2);
+  box-shadow: 0 8px 32px rgba(0,0,0,0.08);
+}
+
+/* ================ */
+/* Navbar & Menus   */
+/* ================ */
+.navbar {
+  background: var(--fs-secondary);
+  box-shadow: 0 2px 20px rgba(0, 0, 0, 0.08);
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+  width: 100%;
+  min-height: 64px;
+  transition: all 0.3s ease;
+  border-bottom: 1px solid rgba(0,0,0,0.05);
+}
+
+.navbar.fixed {
+  position: fixed;
+  left: 0; 
+  right: 0; 
+  top: 0;
+}
+
+.navbar.fs-blur-bg { 
+  background: var(--fs-blur-bg); 
+}
+
+.navbar .container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: var(--fs-space-md) var(--fs-space-lg);
+  min-height: 64px;
+}
+
+.navbar h1 {
+  margin: 0;
+  font-size: 1.5rem;
+  color: var(--fs-primary);
+}
+
+/* Navigation Links */
+.nav-links {
+  display: flex;
+  gap: var(--fs-space-md);
+  align-items: center;
+}
+
+.nav-links a {
+  padding: var(--fs-space-sm) var(--fs-space-md);
+  border-radius: var(--fs-radius);
+  transition: all 0.3s ease;
+  font-weight: 500;
+  margin: 0 var(--fs-space-xs);
+}
+
+.nav-links a:hover {
+  background-color: rgba(0, 95, 204, 0.1);
+  transform: translateY(-1px);
+}
+
+/* Mobile Menu Toggle */
+.menu-toggle {
+  display: none;
+  font-size: 24px;
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: var(--fs-space-sm);
+  color: var(--fs-primary);
+}
+
+/* Mobile Sliding Menu */
+.nav-links.active {
+  display: flex !important;
+  flex-direction: column;
+  gap: var(--fs-space-sm);
+  position: absolute;
+  top: 64px;
+  right: var(--fs-space-lg);
+  left: var(--fs-space-lg);
+  background: var(--fs-blur-bg);
+  backdrop-filter: blur(20px) saturate(180%);
+  -webkit-backdrop-filter: blur(20px) saturate(180%);
+  box-shadow: var(--fs-shadow-hover);
+  padding: var(--fs-space-lg);
+  border-radius: var(--fs-radius);
+  animation: slideDownMenu 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  z-index: 1001;
+  border: 1px solid rgba(255,255,255,0.2);
+}
+
+@keyframes slideDownMenu {
+  from { 
+    opacity: 0; 
+    transform: translateY(-20px) scale(0.95);
+  }
+  to { 
+    opacity: 1; 
+    transform: translateY(0) scale(1);
+  }
+}
+
+/* ================== */
+/* Forms & Controls   */
+/* ================== */
+input, textarea, select {
+  width: 100%;
+  padding: var(--fs-space-sm) var(--fs-space-md);
+  border: 2px solid #e9ecef;
+  border-radius: var(--fs-radius);
+  background: #fff;
+  font-family: var(--fs-font-base);
+  font-size: 1rem;
+  transition: all 0.3s ease;
+  margin-bottom: var(--fs-space-sm);
+}
+
+input:focus, textarea:focus, select:focus {
+  outline: none;
+  border-color: var(--fs-primary);
+  box-shadow: 0 0 0 4px rgba(0, 95, 204, 0.1);
+  transform: translateY(-1px);
+}
+
+/* ================== */
+/* Responsive Table - FIXED */
+/* ================== */
+
+/* Table Container - Prevents Layout Breaking */
+.table-container {
+  width: 100%;
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+  border-radius: var(--fs-radius);
+  box-shadow: var(--fs-shadow);
+  margin: 0 0 var(--fs-space-lg) 0;
+}
+
+.fs-table-sortable {
+  width: 100%;
+  min-width: 600px; /* Prevents table from becoming too narrow */
+  border-collapse: collapse;
+  background: var(--fs-secondary);
+  font-size: 0.9rem; /* Slightly smaller text for better fit */
+  margin: 0;
+}
+
+.fs-table-sortable th {
+  background: var(--fs-primary);
+  color: white;
+  font-weight: 600;
+  font-size: 0.85rem; /* Compact header text */
+  cursor: pointer;
+  padding: var(--fs-space-sm) var(--fs-space-sm);
+  text-align: left;
+  white-space: nowrap; /* Prevents header text wrapping */
+  transition: background-color 0.3s ease;
+}
+
+.fs-table-sortable th:hover {
+  background: var(--fs-accent);
+}
+
+.fs-table-sortable td {
+  padding: var(--fs-space-sm) var(--fs-space-sm);
+  border-bottom: 1px solid #e9ecef;
+  font-size: 0.85rem; /* Compact cell text */
+  white-space: nowrap; /* Prevents text wrapping */
+  transition: background-color 0.3s ease;
+}
+
+.fs-table-sortable tr:hover td {
+  background-color: rgba(0, 95, 204, 0.05);
+}
+
+/* Mobile Table Responsive Design */
+@media (max-width: 768px) {
+  .fs-table-sortable {
+    min-width: 500px; /* Smaller minimum width for mobile */
+    font-size: 0.8rem;
+  }
+  
+  .fs-table-sortable th,
+  .fs-table-sortable td {
+    padding: var(--fs-space-xs) var(--fs-space-sm);
+    font-size: 0.75rem; /* Even more compact for mobile */
+  }
+  
+  .fs-table-sortable th {
+    font-size: 0.8rem;
+  }
+}
+
+/* Ultra Small Screens - Card Layout */
+@media (max-width: 480px) {
+  .table-container {
+    display: none; /* Hide table on very small screens */
+  }
+  
+  .table-cards {
+    display: block;
+  }
+}
+
+/* Card Layout for Mobile Fallback */
+.table-cards {
+  display: none;
+}
+
+.table-card {
+  background: var(--fs-secondary);
+  border-radius: var(--fs-radius);
+  box-shadow: var(--fs-shadow);
+  padding: var(--fs-space-md);
+  margin-bottom: var(--fs-space-sm);
+  border-left: 4px solid var(--fs-primary);
+}
+
+.table-card-title {
+  font-weight: 600;
+  color: var(--fs-primary);
+  margin-bottom: var(--fs-space-xs);
+}
+
+.table-card-content {
+  font-size: 0.9rem;
+  color: var(--fs-text-light);
+}
+
+/* =================== */
+/* UI Utilities & Misc */
+/* =================== */
+.shadow { box-shadow: var(--fs-shadow) !important; }
+.shadow:hover { box-shadow: var(--fs-shadow-hover) !important; }
+.rounded { border-radius: var(--fs-radius) !important; }
+
+.text-center { text-align: center !important; }
+.text-right { text-align: right !important; }
+.text-left { text-align: left !important; }
+
+.align-middle { vertical-align: middle !important; }
+.align-top { vertical-align: top !important; }
+.align-bottom { vertical-align: bottom !important; }
+
+/* ================= */
+/* Animations & FX   */
+/* ================= */
+@keyframes fadeInUp {
+  from { 
+    opacity: 0; 
+    transform: translateY(30px);
+  }
+  to { 
+    opacity: 1; 
+    transform: translateY(0);
+  }
+}
+
+.fade-in-up { 
+  animation: fadeInUp 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+@keyframes pulse {
+  0%, 100% { transform: scale(1); }
+  50% { transform: scale(1.03); }
+}
+
+.pulse { 
+  animation: pulse 2s infinite ease-in-out;
+}
+
+.animate-on-scroll {
+  opacity: 0;
+  transform: translateY(30px);
+  transition: all 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.animate-on-scroll.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* ========================= */
+/* Margin & Padding Utility  */
+/* ========================= */
+/* Margin Utilities */
+.mt-xs { margin-top: var(--fs-space-xs) !important; }
+.mt-sm { margin-top: var(--fs-space-sm) !important; }
+.mt-md { margin-top: var(--fs-space-md) !important; }
+.mt-lg { margin-top: var(--fs-space-lg) !important; }
+.mt-xl { margin-top: var(--fs-space-xl) !important; }
+
+.mb-xs { margin-bottom: var(--fs-space-xs) !important; }
+.mb-sm { margin-bottom: var(--fs-space-sm) !important; }
+.mb-md { margin-bottom: var(--fs-space-md) !important; }
+.mb-lg { margin-bottom: var(--fs-space-lg) !important; }
+.mb-xl { margin-bottom: var(--fs-space-xl) !important; }
+
+.ml-xs { margin-left: var(--fs-space-xs) !important; }
+.ml-sm { margin-left: var(--fs-space-sm) !important; }
+.ml-md { margin-left: var(--fs-space-md) !important; }
+.ml-lg { margin-left: var(--fs-space-lg) !important; }
+.ml-xl { margin-left: var(--fs-space-xl) !important; }
+
+.mr-xs { margin-right: var(--fs-space-xs) !important; }
+.mr-sm { margin-right: var(--fs-space-sm) !important; }
+.mr-md { margin-right: var(--fs-space-md) !important; }
+.mr-lg { margin-right: var(--fs-space-lg) !important; }
+.mr-xl { margin-right: var(--fs-space-xl) !important; }
+
+/* Padding Utilities */
+.pt-xs { padding-top: var(--fs-space-xs) !important; }
+.pt-sm { padding-top: var(--fs-space-sm) !important; }
+.pt-md { padding-top: var(--fs-space-md) !important; }
+.pt-lg { padding-top: var(--fs-space-lg) !important; }
+.pt-xl { padding-top: var(--fs-space-xl) !important; }
+
+.pb-xs { padding-bottom: var(--fs-space-xs) !important; }
+.pb-sm { padding-bottom: var(--fs-space-sm) !important; }
+.pb-md { padding-bottom: var(--fs-space-md) !important; }
+.pb-lg { padding-bottom: var(--fs-space-lg) !important; }
+.pb-xl { padding-bottom: var(--fs-space-xl) !important; }
+
+.pl-xs { padding-left: var(--fs-space-xs) !important; }
+.pl-sm { padding-left: var(--fs-space-sm) !important; }
+.pl-md { padding-left: var(--fs-space-md) !important; }
+.pl-lg { padding-left: var(--fs-space-lg) !important; }
+.pl-xl { padding-left: var(--fs-space-xl) !important; }
+
+.pr-xs { padding-right: var(--fs-space-xs) !important; }
+.pr-sm { padding-right: var(--fs-space-sm) !important; }
+.pr-md { padding-right: var(--fs-space-md) !important; }
+.pr-lg { padding-right: var(--fs-space-lg) !important; }
+.pr-xl { padding-right: var(--fs-space-xl) !important; }
+
+/* ========================== */
+/* Responsive: Mobile & Large */
+/* ========================== */
+@media (max-width: 1024px) {
+  .container { 
+    max-width: 95vw; 
+    padding: 0 var(--fs-space-md);
+  }
+  
+  .section { 
+    padding: var(--fs-space-lg) 0;
+    margin: var(--fs-space-sm) 0;
+  }
+  
+  .grid-cols-2, .grid-cols-3 { 
+    grid-template-columns: 1fr; 
+  }
+  
+  .grid { gap: var(--fs-space-md); }
+}
+
+@media (max-width: 768px) {
+  /* Hide desktop navigation */
+  .navbar .nav-links { 
+    display: none; 
+  }
+  
+  .navbar .menu-toggle { 
+    display: block; 
+  }
+  
+  /* Mobile-specific spacing */
+  .container { 
+    padding: 0 var(--fs-space-sm);
+  }
+  
+  .section { 
+    padding: var(--fs-space-md) 0;
+  }
+  
+  .card-body { 
+    padding: var(--fs-space-md);
+  }
+  
+  .grid { 
+    gap: var(--fs-space-sm);
+  }
+  
+  /* Typography scaling */
+  h1 { font-size: 2rem; }
+  h2 { font-size: 1.75rem; }
+  h3 { font-size: 1.35rem; }
+  
+  /* Button adjustments */
+  .btn {
+    min-width: 100px;
+    padding: var(--fs-space-sm);
+  }
+}
+
+/* Large screen optimizations */
+@media (min-width: 1280px) {
+  .container { 
+    max-width: 1400px; 
+    padding: 0 var(--fs-space-xl);
+  }
+  
+  .section { 
+    padding: calc(var(--fs-space-xl) + 24px) 0;
+  }
+  
+  .grid { 
+    gap: calc(var(--fs-space-lg) + 12px);
+  }
+}
+
+/* =================== */
+/* Print Styles        */
+/* =================== */
+@media print {
+  .navbar, .menu-toggle, .btn { display: none !important; }
+  .card { break-inside: avoid; }
+  * { color: #000 !important; background: #fff !important; }
+}
+
+/* End FineStyle Framework CSS v2.4 */
