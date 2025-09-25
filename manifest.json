@@ -1,0 +1,22 @@
+{
+  "name": "John Rish Ladica - Canva Template Creator",
+  "short_name": "John Rish Ladica",
+  "description": "Professional Canva Template Creator with 80+ templates designed. Specialized in educational and creative designs for students and institutions.",
+  "start_url": "/",
+  "display": "standalone",
+  "theme_color": "#00c4cc",
+  "background_color": "#ffffff",
+  "orientation": "portrait-primary",
+  "icons": [
+    {
+      "src": "img/icon-192.png",
+      "sizes": "192x192",
+      "type": "image/png"
+    },
+    {
+      "src": "img/icon-512.png", 
+      "sizes": "512x512",
+      "type": "image/png"
+    }
+  ]
+}

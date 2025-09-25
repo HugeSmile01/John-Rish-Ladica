@@ -2,33 +2,44 @@
     document.addEventListener('DOMContentLoaded', function() {
       // Security: Input validation and XSS prevention
       const sanitizeInput = (input) => {
-        return DOMPurify.sanitize(input);
+        // Use DOMPurify if available, otherwise return input as-is for basic functionality
+        return window.DOMPurify ? window.DOMPurify.sanitize(input) : input;
       };
       
       // DOM Elements
-      const sidebarToggle = document.getElementById('sidebarToggle');
-      const sidebar = document.getElementById('sidebar');
+      const sidebarToggle = document.getElementById('navbarToggle');
+      const sidebar = document.getElementById('sidebarRight');
+      const sidebarBackdrop = document.getElementById('sidebarBackdrop');
       const navLinks = document.querySelectorAll('.nav-link');
       const filterButtons = document.querySelectorAll('.filter-btn');
       const portfolioItems = document.querySelectorAll('.gallery-item');
       
       // Enhanced Sidebar Toggle with Accessibility
-      sidebarToggle.addEventListener('click', function(e) {
-        e.preventDefault();
-        const isOpen = sidebar.classList.contains('show');
-        
-        if (isOpen) {
+      if (sidebarToggle && sidebar) {
+        sidebarToggle.addEventListener('click', function(e) {
+          e.preventDefault();
+          const isOpen = sidebar.classList.contains('show');
+          
+          if (isOpen) {
+            sidebar.classList.remove('show');
+            if (sidebarBackdrop) sidebarBackdrop.classList.remove('active');
+            this.setAttribute('aria-expanded', 'false');
+          } else {
+            sidebar.classList.add('show');
+            if (sidebarBackdrop) sidebarBackdrop.classList.add('active');
+            this.setAttribute('aria-expanded', 'true');
+          }
+        });
+      }
+
+      // Close sidebar when clicking backdrop
+      if (sidebarBackdrop) {
+        sidebarBackdrop.addEventListener('click', function() {
           sidebar.classList.remove('show');
-          sidebar.classList.add('hide');
-          this.setAttribute('aria-expanded', 'false');
-          this.innerHTML = '<i class="fas fa-bars"></i>';
-        } else {
-          sidebar.classList.add('show');
-          sidebar.classList.remove('hide');
-          this.setAttribute('aria-expanded', 'true');
-          this.innerHTML = '<i class="fas fa-times"></i>';
-        }
-      });
+          sidebarBackdrop.classList.remove('active');
+          sidebarToggle.setAttribute('aria-expanded', 'false');
+        });
+      }
       
       // Enhanced Navigation with Smooth Scrolling
       navLinks.forEach((link, index) => {
@@ -46,8 +57,8 @@
           const targetSection = document.querySelector(targetId);
           
           if (targetSection) {
-            // Calculate offset for fixed sidebar
-            const offset = window.innerWidth <= 768 ? 0 : 80;
+            // Calculate offset for fixed navbar (80px)
+            const offset = 100;
             const elementPosition = targetSection.getBoundingClientRect().top;
             const offsetPosition = elementPosition + window.pageYOffset - offset;
             
@@ -58,12 +69,11 @@
             });
           }
           
-          // Close sidebar on mobile after navigation
-          if (window.innerWidth <= 768) {
+          // Close sidebar after navigation
+          if (sidebar && sidebar.classList.contains('show')) {
             sidebar.classList.remove('show');
-            sidebar.classList.add('hide');
-            sidebarToggle.setAttribute('aria-expanded', 'false');
-            sidebarToggle.innerHTML = '<i class="fas fa-bars"></i>';
+            if (sidebarBackdrop) sidebarBackdrop.classList.remove('active');
+            if (sidebarToggle) sidebarToggle.setAttribute('aria-expanded', 'false');
           }
         });
       });
@@ -137,17 +147,15 @@
         observer.observe(el);
       });
       
-      // Close sidebar when clicking outside (mobile)
+      // Close sidebar when clicking outside
       document.addEventListener('click', function(e) {
-        if (window.innerWidth <= 768 &&
+        if (sidebar && sidebar.classList.contains('show') &&
           !sidebar.contains(e.target) &&
-          !sidebarToggle.contains(e.target) &&
-          sidebar.classList.contains('show')) {
+          !sidebarToggle.contains(e.target)) {
           
           sidebar.classList.remove('show');
-          sidebar.classList.add('hide');
-          sidebarToggle.setAttribute('aria-expanded', 'false');
-          sidebarToggle.innerHTML = '<i class="fas fa-bars"></i>';
+          if (sidebarBackdrop) sidebarBackdrop.classList.remove('active');
+          if (sidebarToggle) sidebarToggle.setAttribute('aria-expanded', 'false');
         }
       });
       
@@ -164,12 +172,7 @@
       
       // Responsive Navigation Update
       function updateNavigation() {
-        if (window.innerWidth > 768) {
-          sidebar.classList.remove('show');
-          sidebar.classList.remove('hide');
-          sidebarToggle.setAttribute('aria-expanded', 'false');
-          sidebarToggle.innerHTML = '<i class="fas fa-bars"></i>';
-        }
+        // No specific responsive updates needed for top navbar
       }
       
       // Throttled resize handler for performance
@@ -181,12 +184,11 @@
       
       // Enhanced Keyboard Navigation
       document.addEventListener('keydown', function(e) {
-        // ESC key closes mobile sidebar
-        if (e.key === 'Escape' && sidebar.classList.contains('show')) {
+        // ESC key closes sidebar
+        if (e.key === 'Escape' && sidebar && sidebar.classList.contains('show')) {
           sidebar.classList.remove('show');
-          sidebar.classList.add('hide');
-          sidebarToggle.setAttribute('aria-expanded', 'false');
-          sidebarToggle.innerHTML = '<i class="fas fa-bars"></i>';
+          if (sidebarBackdrop) sidebarBackdrop.classList.remove('active');
+          if (sidebarToggle) sidebarToggle.setAttribute('aria-expanded', 'false');
         }
       });
       
