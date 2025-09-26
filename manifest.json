@@ -9,14 +9,19 @@
   "orientation": "portrait-primary",
   "icons": [
     {
-      "src": "img/icon-192.png",
+      "src": "img/profile.png",
       "sizes": "192x192",
-      "type": "image/png"
+      "type": "image/png",
+      "purpose": "any maskable"
     },
     {
-      "src": "img/icon-512.png", 
+      "src": "img/profile.png", 
       "sizes": "512x512",
-      "type": "image/png"
+      "type": "image/png",
+      "purpose": "any maskable"
     }
-  ]
+  ],
+  "categories": ["design", "education", "templates"],
+  "lang": "en",
+  "dir": "ltr"
 }

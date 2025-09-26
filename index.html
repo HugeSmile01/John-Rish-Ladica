@@ -50,10 +50,11 @@
     <div class="sidebar-backdrop" id="sidebarBackdrop"></div>
     <div class="sidebar-content">
       <div class="profile-section">
-        <img src="img/profile-placeholder.svg" 
+        <img src="img/profile.png" 
              alt="John Rish Ladica - Professional Profile" 
              class="profile-img"
-             loading="lazy">
+             loading="lazy"
+             onerror="this.src='img/profile-placeholder.svg'">
         <div class="profile-name">John Rish Ladica</div>
         <div class="profile-title">Canva Template Creator</div>
         <div class="profile-location">Hingatungan, Silago, Southern Leyte</div>
@@ -441,5 +442,20 @@
   <!-- Scripts -->
   <script src="res/fs-2.0.min.js"></script>
   <script src="main.js"></script>
+  
+  <!-- PWA Service Worker Registration - making this site work offline! -->
+  <script>
+    if ('serviceWorker' in navigator) {
+      window.addEventListener('load', function() {
+        navigator.serviceWorker.register('/sw.js')
+          .then(function(registration) {
+            console.log('SW: Registration successful! 🎉', registration.scope);
+          })
+          .catch(function(error) {
+            console.log('SW: Registration failed 😞', error);
+          });
+      });
+    }
+  </script>
 </body>
 </html>
