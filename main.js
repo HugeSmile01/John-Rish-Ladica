@@ -332,6 +332,45 @@
         });
       }
       
+      // Randomly assign actual template images to gallery items - looking fresh! 🎨
+      function randomizeGalleryImages() {
+        const availableImages = [
+          'img/1.png', 'img/2.png', 'img/3.png', 'img/4.png', 
+          'img/6.png', 'img/7.png', 'img/8.png', 'img/9.png',
+          'img/10.png', 'img/12.png', 'img/13.png', 'img/14.png'
+        ];
+        
+        const galleryImages = document.querySelectorAll('.gallery-item img');
+        
+        galleryImages.forEach((img, index) => {
+          // Randomly pick an image, but avoid consecutive duplicates
+          let randomIndex;
+          let attempts = 0;
+          do {
+            randomIndex = Math.floor(Math.random() * availableImages.length);
+            attempts++;
+          } while (attempts < 5 && index > 0 && 
+                   availableImages[randomIndex] === galleryImages[index - 1].src.split('/').pop());
+          
+          const originalSrc = img.src;
+          img.src = availableImages[randomIndex];
+          
+          // Fallback to placeholder if image fails to load
+          img.onerror = function() {
+            this.src = originalSrc;
+            console.log('Fallback: Using placeholder for gallery item', index);
+          };
+          
+          // Add loading optimization
+          img.loading = 'lazy';
+        });
+        
+        console.log('Gallery images randomized with actual template photos! 📸');
+      }
+      
+      // Initialize gallery images
+      randomizeGalleryImages();
+      
       console.log('Portfolio website initialized successfully with security features');
     });
     
