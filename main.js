@@ -332,44 +332,43 @@
         });
       }
       
-      // Randomly assign actual template images to gallery items - looking fresh! 🎨
-      function randomizeGalleryImages() {
-        const availableImages = [
-          'img/1.png', 'img/2.png', 'img/3.png', 'img/4.png', 
-          'img/6.png', 'img/7.png', 'img/8.png', 'img/9.png',
-          'img/10.png', 'img/12.png', 'img/13.png', 'img/14.png'
-        ];
-        
+      // Assign permanent template images to gallery items
+      function assignPermanentGalleryImages() {
         const galleryImages = document.querySelectorAll('.gallery-item img');
         
+        // Permanent image assignments for each gallery item
+        const permanentAssignments = [
+          'img/1.png',   // Educational Template 1
+          'img/2.png',   // Educational Template 2  
+          'img/3.png',   // Social Media Template 1
+          'img/4.png',   // Social Media Template 2
+          'img/6.png',   // Presentation Template 1
+          'img/7.png',   // Presentation Template 2
+          'img/8.png',   // Certificate Template 1
+          'img/9.png'    // Certificate Template 2
+        ];
+        
         galleryImages.forEach((img, index) => {
-          // Randomly pick an image, but avoid consecutive duplicates
-          let randomIndex;
-          let attempts = 0;
-          do {
-            randomIndex = Math.floor(Math.random() * availableImages.length);
-            attempts++;
-          } while (attempts < 5 && index > 0 && 
-                   availableImages[randomIndex] === galleryImages[index - 1].src.split('/').pop());
-          
-          const originalSrc = img.src;
-          img.src = availableImages[randomIndex];
-          
-          // Fallback to placeholder if image fails to load
-          img.onerror = function() {
-            this.src = originalSrc;
-            console.log('Fallback: Using placeholder for gallery item', index);
-          };
-          
-          // Add loading optimization
-          img.loading = 'lazy';
+          if (index < permanentAssignments.length) {
+            const originalSrc = img.src;
+            img.src = permanentAssignments[index];
+            
+            // Fallback to placeholder if image fails to load
+            img.onerror = function() {
+              this.src = originalSrc;
+              console.log('Fallback: Using placeholder for gallery item', index);
+            };
+            
+            // Add loading optimization
+            img.loading = 'lazy';
+          }
         });
         
-        console.log('Gallery images randomized with actual template photos! 📸');
+        console.log('Gallery images assigned with permanent template photos! 📸');
       }
       
-      // Initialize gallery images
-      randomizeGalleryImages();
+      // Initialize gallery images with permanent assignments
+      assignPermanentGalleryImages();
       
       console.log('Portfolio website initialized successfully with security features');
     });
