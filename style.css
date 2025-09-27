@@ -272,7 +272,6 @@
     .profile-img:hover::before {
       opacity: 0.3;
     }
-    }
 
     .profile-name {
       font-size: 1.35rem;
@@ -782,7 +781,6 @@
     .stat-card:hover .stat-label {
       color: var(--canva-teal);
     }
-    }
     
     /* Gallery Styles - Enhanced Mobile Interactions */
     .gallery-container {
@@ -917,8 +915,6 @@
       color: white;
       transform: translateY(-1px);
       border-color: transparent;
-    }
-      border: 1px solid rgba(0, 95, 204, 0.2);
     }
     
     /* Filter Buttons - Enhanced Mobile Interactions */
@@ -1273,4 +1269,77 @@
 
     ::-webkit-scrollbar-thumb:hover {
       background: var(--canva-gradient-hover);
+    }
+
+    /* Enhanced keyboard navigation styles */
+    .keyboard-navigation *:focus {
+      outline: 3px solid var(--canva-teal);
+      outline-offset: 2px;
+      border-radius: 4px;
+    }
+
+    .keyboard-navigation .nav-link:focus,
+    .keyboard-navigation .filter-btn:focus,
+    .keyboard-navigation .gallery-item:focus {
+      transform: scale(1.02);
+      box-shadow: var(--shadow-medium);
+    }
+
+    /* Lazy loading placeholder styles */
+    img.lazy {
+      opacity: 0;
+      transition: opacity 0.3s ease;
+    }
+
+    img.lazy.loaded {
+      opacity: 1;
+    }
+
+    /* Skip to content link for accessibility */
+    .skip-link {
+      position: absolute;
+      left: -9999px;
+      z-index: 999;
+      padding: 8px 16px;
+      background: var(--canva-teal);
+      color: white;
+      text-decoration: none;
+      border-radius: 4px;
+    }
+
+    .skip-link:focus {
+      left: 6px;
+      top: 6px;
+    }
+
+    /* Improved focus indicators */
+    .navbar-toggle:focus {
+      outline: 3px solid rgba(0, 196, 204, 0.5);
+      outline-offset: 2px;
+    }
+
+    /* High contrast mode support */
+    @media (prefers-contrast: high) {
+      .stat-card,
+      .gallery-item,
+      .filter-btn {
+        border: 2px solid currentColor;
+      }
+    }
+
+    /* Reduced motion support */
+    @media (prefers-reduced-motion: reduce) {
+      *,
+      *::before,
+      *::after {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+        scroll-behavior: auto !important;
+      }
+      
+      .hero-section::before,
+      .hero-section::after {
+        animation: none;
+      }
     }
