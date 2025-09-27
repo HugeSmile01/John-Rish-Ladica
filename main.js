@@ -139,8 +139,18 @@
         });
       }, observerOptions);
       
-      // Observe all animate-on-scroll elements
+      // Observe all animate-on-scroll elements except those in the about section
       document.querySelectorAll('.animate-on-scroll').forEach((el, index) => {
+        // Skip animation for elements within the about section
+        const aboutSection = el.closest('#about');
+        if (aboutSection) {
+          // Make about section elements visible immediately without animation
+          el.style.opacity = '1';
+          el.style.transform = 'translateY(0)';
+          return; // Skip adding animation observer
+        }
+        
+        // Apply animations to all other sections
         el.style.opacity = '0';
         el.style.transform = 'translateY(30px)';
         el.style.transition = 'all 0.6s cubic-bezier(0.4,0,0.2,1)';
@@ -336,16 +346,16 @@
       function assignPermanentGalleryImages() {
         const galleryImages = document.querySelectorAll('.gallery-item img');
         
-        // Permanent image assignments for each gallery item
+        // Actual work images from John Rish's portfolio
         const permanentAssignments = [
-          'img/1.png',   // Educational Template 1
-          'img/2.png',   // Educational Template 2  
-          'img/3.png',   // Social Media Template 1
-          'img/4.png',   // Social Media Template 2
-          'img/6.png',   // Presentation Template 1
-          'img/7.png',   // Presentation Template 2
-          'img/8.png',   // Certificate Template 1
-          'img/9.png'    // Certificate Template 2
+          'img/Official-application-letter-or-proposal.png',   // Educational Template 1
+          'img/official-mechanics&criteriaforjudging.png',   // Educational Template 2  
+          'img/official-fb-instagram-announcement-post.png',   // Social Media Template 1
+          'img/campaign-flyerOrposter.png',   // Social Media Template 2
+          'img/playstore-mobile-application-split-long-gallery.png',   // Presentation Template 1
+          'img/507-designs-created-canva-design-dna.png',   // Presentation Template 2
+          'img/certificate-of-appreciation.png',   // Certificate Template 1
+          'img/certificate-of-recognation.png'    // Certificate Template 2
         ];
         
         galleryImages.forEach((img, index) => {
