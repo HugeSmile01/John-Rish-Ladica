@@ -370,17 +370,155 @@
       // Initialize gallery images with permanent assignments
       assignPermanentGalleryImages();
       
+      // Add new feature: Enhanced smooth scrolling with custom easing
+      function addSmoothScrolling() {
+        const navLinks = document.querySelectorAll('.nav-link[href^="#"]');
+        
+        navLinks.forEach(link => {
+          link.addEventListener('click', function(e) {
+            e.preventDefault();
+            const targetId = this.getAttribute('href');
+            const targetSection = document.querySelector(targetId);
+            
+            if (targetSection) {
+              const navbar = document.querySelector('.liquid-navbar');
+              const navbarHeight = navbar ? navbar.offsetHeight : 80;
+              const targetPosition = targetSection.offsetTop - navbarHeight - 20;
+              
+              // Custom smooth scroll with easing
+              const startPosition = window.pageYOffset;
+              const distance = targetPosition - startPosition;
+              const duration = 800;
+              let start = null;
+              
+              function ease(t) {
+                return t < 0.5 ? 4 * t * t * t : (t - 1) * (2 * t - 2) * (2 * t - 2) + 1;
+              }
+              
+              function animation(currentTime) {
+                if (start === null) start = currentTime;
+                const timeElapsed = currentTime - start;
+                const progress = Math.min(timeElapsed / duration, 1);
+                
+                window.scrollTo(0, startPosition + distance * ease(progress));
+                
+                if (timeElapsed < duration) {
+                  requestAnimationFrame(animation);
+                }
+              }
+              
+              requestAnimationFrame(animation);
+            }
+          });
+        });
+      }
+      
+      // Add feature: Keyboard navigation support
+      function addKeyboardNavigation() {
+        document.addEventListener('keydown', function(e) {
+          // Enhanced accessibility - keyboard navigation
+          if (e.key === 'Escape') {
+            // Close sidebar on Escape
+            const sidebar = document.getElementById('sidebarRight');
+            const backdrop = document.getElementById('sidebarBackdrop');
+            const toggle = document.getElementById('navbarToggle');
+            
+            if (sidebar && sidebar.classList.contains('show')) {
+              sidebar.classList.remove('show');
+              if (backdrop) backdrop.classList.remove('active');
+              if (toggle) toggle.setAttribute('aria-expanded', 'false');
+            }
+          }
+          
+          // Tab navigation enhancement
+          if (e.key === 'Tab') {
+            document.body.classList.add('keyboard-navigation');
+          }
+        });
+        
+        // Remove keyboard navigation class on mouse interaction
+        document.addEventListener('mousedown', function() {
+          document.body.classList.remove('keyboard-navigation');
+        });
+      }
+      
+      // Add feature: Lazy loading optimization for images
+      function addLazyLoadingEnhancements() {
+        if ('IntersectionObserver' in window) {
+          const imageObserver = new IntersectionObserver((entries, observer) => {
+            entries.forEach(entry => {
+              if (entry.isIntersecting) {
+                const img = entry.target;
+                if (img.dataset.src) {
+                  img.src = img.dataset.src;
+                  img.classList.remove('lazy');
+                  imageObserver.unobserve(img);
+                }
+              }
+            });
+          });
+          
+          document.querySelectorAll('img[data-src]').forEach(img => {
+            imageObserver.observe(img);
+          });
+        }
+      }
+      
+      // Initialize new features
+      addSmoothScrolling();
+      addKeyboardNavigation();
+      addLazyLoadingEnhancements();
+      
+      console.log('Enhanced features initialized: smooth scrolling, keyboard navigation, lazy loading');
+      
       console.log('Portfolio website initialized successfully with security features');
     });
     
-    // Error handling wrapper
+    // Error handling wrapper with better reporting
     window.addEventListener('error', function(e) {
       console.error('Portfolio Error:', e.error);
-      // Could implement error reporting here in production
+      
+      // Handle external resource loading failures gracefully
+      if (e.target && e.target.tagName) {
+        if (e.target.tagName === 'LINK' && e.target.rel === 'stylesheet') {
+          console.warn('External CSS failed to load:', e.target.href);
+        } else if (e.target.tagName === 'SCRIPT') {
+          console.warn('External script failed to load:', e.target.src);
+        }
+      }
     });
     
-    // Performance monitoring (optional)
+    // Handle unhandled promise rejections
+    window.addEventListener('unhandledrejection', function(e) {
+      console.error('Unhandled Promise Rejection:', e.reason);
+      e.preventDefault(); // Prevent the default browser error handling
+    });
+    
+    // Performance monitoring with Web Vitals
     window.addEventListener('load', function() {
       const loadTime = performance.now();
       console.log(`Portfolio loaded in ${Math.round(loadTime)}ms`);
+      
+      // Monitor Core Web Vitals if available
+      if ('PerformanceObserver' in window) {
+        try {
+          const observer = new PerformanceObserver((list) => {
+            list.getEntries().forEach((entry) => {
+              if (entry.entryType === 'largest-contentful-paint') {
+                console.log('LCP:', Math.round(entry.startTime), 'ms');
+              }
+              if (entry.entryType === 'first-input') {
+                console.log('FID:', Math.round(entry.processingStart - entry.startTime), 'ms');
+              }
+              if (entry.entryType === 'layout-shift' && !entry.hadRecentInput) {
+                console.log('CLS:', entry.value);
+              }
+            });
+          });
+          
+          observer.observe({ entryTypes: ['largest-contentful-paint', 'first-input', 'layout-shift'] });
+        } catch (error) {
+          console.log('Performance monitoring not fully supported');
+        }
+      }
     });
