@@ -1343,3 +1343,183 @@
         animation: none;
       }
     }
+
+    /* Canva Design School Certifications Section */
+    .certifications-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+      gap: var(--fs-space-xl);
+      margin-bottom: var(--fs-space-xl);
+    }
+
+    .certification-card {
+      background: white;
+      border-radius: var(--fs-radius-lg);
+      padding: var(--fs-space-xl);
+      box-shadow: var(--shadow-medium);
+      transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+      border: 2px solid transparent;
+    }
+
+    .certification-card::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 4px;
+      background: var(--canva-gradient);
+      transform: scaleX(0);
+      transition: transform 0.3s ease;
+    }
+
+    .certification-card:hover::before {
+      transform: scaleX(1);
+    }
+
+    .certification-card:hover {
+      transform: translateY(-8px);
+      box-shadow: 0 15px 40px rgba(0, 196, 204, 0.25);
+      border-color: rgba(0, 196, 204, 0.3);
+    }
+
+    .certification-badge {
+      margin-bottom: var(--fs-space-lg);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .certification-badge img {
+      max-width: 200px;
+      height: auto;
+      transition: transform 0.3s ease;
+      filter: drop-shadow(0 4px 15px rgba(0, 196, 204, 0.2));
+    }
+
+    .certification-card:hover .certification-badge img {
+      transform: scale(1.05) rotate(2deg);
+    }
+
+    .certification-content h3 {
+      font-size: 1.5rem;
+      font-weight: 700;
+      background: var(--canva-gradient);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      margin-bottom: var(--fs-space-md);
+    }
+
+    .certification-content p {
+      color: var(--fs-text-light);
+      margin-bottom: var(--fs-space-lg);
+      line-height: 1.6;
+    }
+
+    .cert-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 12px 24px;
+      background: var(--canva-gradient);
+      color: white;
+      text-decoration: none;
+      border-radius: var(--fs-radius);
+      font-weight: 600;
+      transition: all 0.3s ease;
+      box-shadow: 0 4px 15px rgba(0, 196, 204, 0.3);
+    }
+
+    .cert-link:hover {
+      background: var(--canva-gradient-hover);
+      transform: translateY(-2px);
+      box-shadow: 0 6px 20px rgba(0, 196, 204, 0.4);
+    }
+
+    .cert-link i {
+      font-size: 1.1rem;
+    }
+
+    /* Certificates Showcase */
+    .certificates-showcase {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: var(--fs-space-lg);
+      margin-top: var(--fs-space-lg);
+    }
+
+    .certificate-preview {
+      position: relative;
+      border-radius: var(--fs-radius-lg);
+      overflow: hidden;
+      box-shadow: var(--shadow-light);
+      transition: all 0.3s ease;
+      cursor: pointer;
+    }
+
+    .certificate-preview img {
+      width: 100%;
+      height: auto;
+      display: block;
+      transition: transform 0.3s ease;
+    }
+
+    .certificate-overlay {
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      background: linear-gradient(to top, rgba(0, 0, 0, 0.9), transparent);
+      color: white;
+      padding: var(--fs-space-lg);
+      transform: translateY(100%);
+      transition: transform 0.3s ease;
+    }
+
+    .certificate-preview:hover .certificate-overlay {
+      transform: translateY(0);
+    }
+
+    .certificate-preview:hover img {
+      transform: scale(1.05);
+    }
+
+    .certificate-preview:hover {
+      box-shadow: 0 10px 30px rgba(0, 196, 204, 0.3);
+    }
+
+    .certificate-overlay p {
+      margin: 0;
+      font-weight: 600;
+      font-size: 1rem;
+      color: white;
+    }
+
+    .certificate-overlay small {
+      color: rgba(255, 255, 255, 0.8);
+      font-size: 0.85rem;
+    }
+
+    /* Responsive Design for Certifications */
+    @media (max-width: 768px) {
+      .certifications-grid {
+        grid-template-columns: 1fr;
+        gap: var(--fs-space-lg);
+      }
+
+      .certification-card {
+        padding: var(--fs-space-lg);
+      }
+
+      .certification-badge img {
+        max-width: 150px;
+      }
+
+      .certificates-showcase {
+        grid-template-columns: 1fr;
+      }
+    }
