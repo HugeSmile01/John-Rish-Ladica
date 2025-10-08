@@ -1,13 +1,13 @@
 # John Rish Ladica - Professional Canva Template Creator Portfolio
 
-A modern, responsive portfolio website showcasing the work and expertise of John Rish Ladica, a professional Canva Template Creator with 3+ years of experience and 80+ templates created.
+A modern, responsive portfolio website showcasing the work and expertise of John Rish Ladica, a professional Canva Template Creator with 3+ years of experience.
 
 ## 🎨 About John Rish Ladica
 
 Professional Canva Template Creator from Hingatungan, Silago, Southern Leyte, Philippines. Specializing in educational design solutions with a proven track record of creating impactful templates used by 300+ students at Hingatungan National High School.
 
 ### Key Achievements
-- **80+ Professional Templates Created** across multiple categories
+- **Professional Templates Created** across multiple categories
 - **300+ Students Reached** with single template designs
 - **Official School Partnership** with Hingatungan National High School
 - **Featured on Official School Social Media** - Hingatungan Supreme Secondary Learner Government Facebook page
@@ -16,7 +16,7 @@ Professional Canva Template Creator from Hingatungan, Silago, Southern Leyte, Ph
 ## 🚀 Portfolio Features
 
 - **Responsive Design**: Optimized for desktop and mobile viewing
-- **Interactive Gallery**: Showcasing 20 selected templates from 80+ portfolio
+- **Interactive Gallery**: Showcasing selected templates from professional portfolio
 - **Category Filtering**: Educational, Social Media, Presentations, Certificates
 - **Professional Showcase**: Detailed template descriptions and use cases
 - **Achievement Highlights**: School partnership impact and professional milestones
@@ -71,7 +71,7 @@ Professional Canva Template Creator from Hingatungan, Silago, Southern Leyte, Ph
 - Enhanced school's visual communication standards
 
 ### Template Portfolio Metrics
-- 80+ professional templates created
+- Professional template collection
 - Multiple category expertise
 - Consistent quality standards
 - Educational design specialization
@@ -147,7 +147,7 @@ John-Rish-Ladica/
 
 ## 🌟 Why Choose John Rish Ladica?
 
-1. **Proven Track Record**: 80+ templates with documented impact
+1. **Proven Track Record**: Templates with documented impact
 2. **Educational Focus**: Specialized in academic design solutions
 3. **School Partnership**: Real-world institutional collaboration
 4. **Platform Expertise**: 3+ years dedicated Canva experience
@@ -156,7 +156,7 @@ John-Rish-Ladica/
 
 ## 📈 Future Goals
 
-- Expand template portfolio to 100+ designs
+- Expand template portfolio
 - Develop additional school partnerships
 - Create specialized educational design courses
 - Launch template marketplace presence
